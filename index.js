@@ -1,18 +1,20 @@
 const core = require('@actions/core');
-const wait = require('./wait');
+
 
 
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
-
-    core.debug((new Date()).toTimeString())
-    await wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
-
-    core.setOutput('time', new Date().toTimeString());
+      //inputs 
+      const tenantId = core.getInput('tenantId')
+      const appId = core.getInput('appId')
+      const filePath = core.getInput('filePath')
+      const releaseNotes = core.getInput('releaseNotes')
+  
+      console.log(tenantId)
+      console.log(appId)
+      console.log(filePath)
+      console.log(releaseNotes)
   } 
   catch (error) {
     core.setFailed(error.message);
