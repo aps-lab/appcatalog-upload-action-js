@@ -18,6 +18,7 @@ async function run() {
       shell.exec(`fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${number}  appcatalog_app_id:${appId} file_path:${filePath} release_notes:${releaseNotes} `)
   } 
   catch (error) {
+    console.log(error)
     core.setFailed(error.message);
   }
 }
