@@ -367,7 +367,7 @@ module.exports = _head;
 
 const core = __webpack_require__(310);
 const shell = __webpack_require__(16)
-// shell.config.fatal = true
+shell.config.fatal = true
 shell.config.verbose = true
 
 // // most @actions toolkit packages have async methods

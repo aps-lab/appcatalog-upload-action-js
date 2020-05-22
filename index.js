@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const shell = require('shelljs')
-// shell.config.fatal = true
+shell.config.fatal = true
 shell.config.verbose = true
 
 // // most @actions toolkit packages have async methods
