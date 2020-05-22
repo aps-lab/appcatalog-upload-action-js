@@ -15,7 +15,8 @@ shell.config.fatal = true
       const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL
       shell.exec(`git clone ${git}`)
       shell.cd('csi-fastlane-custom-actions/fastlane')
-      shell.exec(`fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${filePath} release_notes:${releaseNotes} `)
+      shell.exec(`bundle exec fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${filePath} release_notes:${releaseNotes} `)
+      shell.cd()
   } 
   catch (error) {
     console.log(error)
