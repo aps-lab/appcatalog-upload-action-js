@@ -386,7 +386,6 @@ shell.config.verbose = true
       shell.exec(`fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${filePath} release_notes:${releaseNotes} `)
   } 
   catch (error) {
-    console.log("ERRROORRRR")
     console.log(error)
     core.setFailed(error.message);
   }
