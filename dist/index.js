@@ -367,7 +367,8 @@ module.exports = _head;
 
 const core = __webpack_require__(310);
 const shell = __webpack_require__(16)
-
+shell.config.fatal = true
+shell.config.verbose = true
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -379,12 +380,14 @@ async function run() {
       const releaseNotes = core.getInput('releaseNotes')
 
       //checkout fastlane custom actions  
-      // shell.exec('git clone ${FASTLANE_CUSTOM_ACTIONS_GIT_URL}')
-      shell.exec('git clone git@git.adorsys.de:csi/csi-fastlane-custom-actions.git')
+      // shell.exec('git clone ${FASTLANE_CUSTOM_ACTIONS_GIT_URL}'
+      console.log(process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL)
+      shell.exec(`git clone ${shell.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL}`)
       shell.cd('csi-fastlane-custom-actions/fastlane')
-      shell.exec("fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:'56c18594e4b04d5320869f83' appcatalog_app_id:'5ebbdd274a93e300693d7356' file_path:'.' release_notes:'test' ")
+      // shell.exec(`fastlane run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${number}  appcatalog_app_id:${appId} file_path:${filePath} release_notes:${releaseNotes} `)
   } 
   catch (error) {
+    console.log(error)
     core.setFailed(error.message);
   }
 }
