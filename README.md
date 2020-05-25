@@ -6,7 +6,7 @@ You can now consume the action by referencing the master branch
 
 ``` yaml
 name: Upload to AppCatalog
-uses: aps-lab/appcatalog-upload-action-js@master
+uses: aps-lab/appcatalog-upload-action@master
 env: 
   FASTLANE_CUSTOM_ACTIONS_GIT_URL: ${{ secrets.FASTLANE_CUSTOM_ACTIONS_GIT_URL }}
   FASTLANE_PASSWORD: ${{ secrets.APPCATALOG_PASSWORD }} 
