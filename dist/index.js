@@ -377,9 +377,10 @@ shell.config.fatal = true
       const appId = core.getInput('appId')
       const filePath = core.getInput('filePath')
       const releaseNotes = core.getInput('releaseNotes')
-      const path = shell.exec(`pwd`) + `/` + filePath
+      const path = '../../' + filePath
 
       //checkout fastlane custom actions  
+
       const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL
       shell.exec(`git clone ${git}`)
       shell.cd('csi-fastlane-custom-actions/fastlane')
