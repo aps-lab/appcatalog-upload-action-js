@@ -18,12 +18,11 @@
   },
   "homepage": "https://github.com/aps-lab/appcatalog-upload-action#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1",
+    "@actions/core": "^1.2.4",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.1",
-    "eslint": "^6.3.0",
-    "jest": "^24.9.0"
+    "eslint": "^6.8.0"
   }
 }
