@@ -14,4 +14,7 @@ with:
   tenantId: '1234'
   appId: '1234' 
   filePath: 'buildFolder/your-app.ipa' # path to your app package(.ipa, .apk) relative to your working directory 
+  releaseNotes: 'This version inludes some bug fixes'
 ```
+
+The `FASTLANE_CUSTOM_ACTIONS_GIT_URL` must contain a deploy token to be able to check out the private repository.
