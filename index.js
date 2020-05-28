@@ -11,6 +11,8 @@ function run() {
     const filePath = core.getInput('filePath');
     const releaseNotes = core.getInput('releaseNotes');
     const path = process.cwd() + '/' + filePath;
+    const fastlane_action_path = process.cwd() + '/' + 'csi-fastlane-custom-actions/fastlane' ;
+  
   
     //checkout fastlane custom actions  
     const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL;
@@ -37,7 +39,7 @@ function run() {
     }
 
     //upload to appcatalog
-    shell.cd('csi-fastlane-custom-actions/fastlane');
+    shell.cd(fastlane_action_path);
     shell.exec(`${fastlaneCommand} run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${path} release_notes:${releaseNotes} `);
   
     //reset current folder to home
