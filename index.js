@@ -11,7 +11,7 @@ function run() {
     const filePath = core.getInput('filePath');
     const releaseNotes = core.getInput('releaseNotes');
     const path = process.cwd() + '/' + filePath;
-    const fastlane_action_path = process.cwd() + '/' + 'csi-fastlane-custom-actions/fastlane' ;
+    const fastlane_action_path = 'csi-fastlane-custom-actions/fastlane' ;
   
   
     //checkout fastlane custom actions  
