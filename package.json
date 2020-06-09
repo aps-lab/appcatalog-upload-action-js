@@ -19,6 +19,7 @@
   "homepage": "https://github.com/aps-lab/appcatalog-upload-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
+    "@actions/tool-cache": "^1.5.5",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
