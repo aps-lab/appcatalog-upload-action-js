@@ -36,7 +36,7 @@ function run() {
       shell.exec('bundle install');
     } else {
       fastlaneCommand = 'fastlane';
-      const result = shell.exec('fastlane');
+      const result = shell.exec('fastlane -v');
       if (result.code !== 0) {
         installUsingGem('fastlane');
       }
