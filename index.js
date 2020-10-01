@@ -36,8 +36,10 @@ function run() {
       shell.exec('bundle install');
     } else {
       fastlaneCommand = 'fastlane';
-
-      installUsingGem('fastlane');
+      const result = shell.exec('fastlane');
+      if (result.code !== 0) {
+        installUsingGem('fastlane');
+      }
     }
 
     //upload to appcatalog
