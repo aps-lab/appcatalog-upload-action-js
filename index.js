@@ -16,6 +16,7 @@ function run() {
     const path = startingPath + '/' + filePath;
     const fastlane_action_path = 'csi-fastlane-custom-actions/fastlane' ;
   
+    core.info(`startingPath: ${startingPath}`)
     //checkout fastlane custom actions if needed
     if (!fs.existsSync(fastlane_action_path)) {
       const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL;
@@ -48,7 +49,8 @@ function run() {
     shell.cd(fastlane_action_path);
     shell.exec(`${fastlaneCommand} run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${path} release_notes:${releaseNotes} `);
   
-    //reset current folder to home
+    //reset current folder to starting point
+    core.info(`reset to starting path: ${startingPath}`)
     shell.cd(startingPath);
   } catch (error) {
     setFailed(error);
