@@ -12,13 +12,15 @@ function run() {
     const appId = core.getInput('appId');
     const filePath = core.getInput('filePath');
     const releaseNotes = core.getInput('releaseNotes');
-    const path = process.cwd() + '/' + filePath;
+    const startingPath = process.cwd();
+    const path = startingPath + '/' + filePath;
     const fastlane_action_path = 'csi-fastlane-custom-actions/fastlane' ;
   
-    //checkout fastlane custom actions  
-    const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL;
-    shell.exec(`git clone ${git}`);
-  
+    //checkout fastlane custom actions if needed
+    if (!fs.existsSync(fastlane_action_path)) {
+      const git = process.env.FASTLANE_CUSTOM_ACTIONS_GIT_URL;
+      shell.exec(`git clone ${git}`);
+    }  
     //install fastlane if needed
     let fastlaneCommand;
     const gemfilePath = process.cwd() + '/Gemfile';
@@ -47,7 +49,7 @@ function run() {
     shell.exec(`${fastlaneCommand} run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${path} release_notes:${releaseNotes} `);
   
     //reset current folder to home
-    shell.cd();
+    shell.cd(startingPath);
   } catch (error) {
     setFailed(error);
   }
