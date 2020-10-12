@@ -47,8 +47,11 @@ function run() {
 
     //upload to appcatalog
     shell.cd(fastlane_action_path);
+    if (releaseNotes != null){
     shell.exec(`${fastlaneCommand} run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${path} release_notes:${releaseNotes} `);
-  
+    } else {
+      shell.exec(`${fastlaneCommand} run distribute_to_appcatalog ktb_environment:'adorsys' tenant_id:${tenantId}  appcatalog_app_id:${appId} file_path:${path} release_notes:${Date.now}`);
+    }
     //reset current folder to starting point
     core.info(`reset to starting path: ${startingPath}`)
     shell.cd(startingPath);
